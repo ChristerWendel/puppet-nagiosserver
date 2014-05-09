@@ -15,6 +15,12 @@
 # ["hosts"]
 #   An array of hashes with host information
 #
+# ["services"]
+#   An array of hashes with service information
+#
+# ["adminaddress"]
+#   E-mail address of nagios admin
+#
 # ["enable"]
 #   Should the service be enabled during boot time?
 #
@@ -27,6 +33,7 @@ class nagiosserver (
   $conf_dir = '/etc/nagios3/conf.d',
   $hosts = [ { hostname => 'localhost', ipaddress => '127.0.0.1',} ],
   $services = [ { name => 'disk', command => 'check_disk',} ],
+  $adminaddress = 'root@localhost',
   $enable = true,
   $start = true
   )  {
