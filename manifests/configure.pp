@@ -20,6 +20,10 @@ class nagiosserver::configure {
     target                        => '/etc/nagios3/conf.d/contacts.cfg',
     service_notification_commands => 'notify-service-by-email',
     host_notification_commands    => 'notify-host-by-email',
+    service_notification_period   => '24x7',
+    host_notification_period      => '24x7',
+    service_notification_options  => 'w,u,c,r',
+    host_notification_options     => 'd,r',
   }
 
   nagios_contactgroup { 'admins':
