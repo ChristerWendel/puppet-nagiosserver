@@ -6,6 +6,9 @@
 # ["version"]
 #   The package version to install
 #
+# ["icinga"]
+#   Set to true to use icinga instead of nagios
+#
 # ["adminpassword"]
 #   Password for `nagiosadmin' user
 #
@@ -29,6 +32,7 @@
 
 class nagiosserver (
   $version = 'present',
+  $icinga = false,
   $adminpassword = 'nagiosadmin',
   $conf_dir = '/etc/nagios3/conf.d',
   $hosts = [ { hostname => 'localhost', ipaddress => '127.0.0.1',} ],

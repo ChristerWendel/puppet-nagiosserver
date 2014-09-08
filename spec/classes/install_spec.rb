@@ -48,4 +48,24 @@ describe 'nagiosserver', :type => :class do
         .with_ensure('latest')
     }
   end
+
+  context 'icinga => true' do
+    let(:params) do
+      {
+        'icinga' => true,
+      }
+    end
+
+    it { should contain_package('nagios-nrpe-plugin')
+        .with_ensure('present')
+    }
+
+    it { should contain_package('icinga-core')
+        .with_ensure('present')
+    }
+
+    it { should contain_package('icinga-cgi')
+        .with_ensure('present')
+    }
+  end
 end

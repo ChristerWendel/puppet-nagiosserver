@@ -34,4 +34,43 @@ describe 'nagiosserver', :type => :class do
         .with_host_notification_options('d,r')
     }
   end
+
+  context 'icinga => true' do
+    let(:params) do
+      {
+        'icinga' => true,
+        'conf_dir' => '/etc/icinga/objects'
+      }
+    end
+
+    it { should contain_file('/etc/icinga/objects/contacts_icinga.cfg')
+        .with_ensure('absent')
+    }
+
+    it { should contain_file('/etc/icinga/objects/extinfo_icinga.cfg')
+        .with_ensure('absent')
+    }
+
+    it { should contain_file('/etc/icinga/objects/hostgroups_icinga.cfg')
+        .with_ensure('absent')
+    }
+
+    it { should contain_file('/etc/icinga/objects/localhost_icinga.cfg')
+        .with_ensure('absent')
+    }
+
+    it { should contain_file('/etc/icinga/objects/services_icinga.cfg')
+        .with_ensure('absent')
+    }
+
+    it { should contain_nagios_contact('nagiosadmin')
+        .with_email('root@localhost')
+        .with_service_notification_commands('notify-service-by-email')
+        .with_host_notification_commands('notify-host-by-email')
+        .with_service_notification_period('24x7')
+        .with_host_notification_period('24x7')
+        .with_service_notification_options('w,u,c,r')
+        .with_host_notification_options('d,r')
+    }
+  end
 end

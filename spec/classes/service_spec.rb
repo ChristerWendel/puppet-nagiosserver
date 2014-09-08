@@ -27,4 +27,17 @@ describe 'nagiosserver', :type => :class do
         .with_enable('true')
     }
   end
+
+  context 'icinga => true' do
+    let(:params) do
+      {
+        'icinga' => true,
+      }
+    end
+
+    it { should contain_service('icinga')
+        .with_ensure('running')
+        .with_enable('true')
+    }
+  end
 end
