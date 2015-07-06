@@ -8,6 +8,6 @@ define nagiosserver::add_nagios_host {
     hostgroups => $title['hostgroups'],
     use        => 'generic-host',
     parents    => $title['parents'],
-    target     => "${conf_dir}/host_${title['hostname']}.cfg",
+    target     => "${conf_dir}/hosts.cfg",
   }
 }
